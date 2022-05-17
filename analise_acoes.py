@@ -12,6 +12,7 @@ import datetime
 # Obtendo e tratando dados
 
 tickers = ["ABEV3.SA", "ITSA4.SA", "WEGE3.SA", "USIM5.SA", "VALE3.SA"]
+#tickers = ["BTC-USD", "DOGE-USD", "ETH-USD"]
 acoes = []
 for tick in tickers:
     acoes.append(Ativo(tick))
@@ -19,6 +20,12 @@ for tick in tickers:
 carteira = []
 for acao in acoes:
     carteira.append(acao.info_hist())
+
+analise_dividendo = []
+for acao in acoes:
+    analise_dividendo.append(acao.MetricasDividendos())
+
+print(analise_dividendo)
 
 #carteira = web.get_data_yahoo(tickers, period= "5y")["Adj Close"]
 #ibov = Ativo("^BVSP").info_hist() #, period = "max")["Adj Close"]

@@ -59,11 +59,13 @@ class Ativo():
         self.info_delta(7,'Últimos 7 dias')
 
     def MetricasDividendos(self):
-        self.dividendoYield = self.detalhes[self.cod]['dividendYield']
-        self.dividendofuturo = self.detalhes[self.cod]['dividendRate']
-        self.payout = self.detalhes[self.cod]['payoutRatio']
-        divida_liquida_sobre_patrimonio_liquido  = None
-        divida_sobre_o_lucro_operacional = None
+        #TODO criar métricas de Dividendos Corretamente
+        if self.cod != "^BVSP":
+            self.dividendoYield = self.detalhes[self.cod]['dividendYield']
+            self.dividendofuturo = self.detalhes[self.cod]['dividendRate']
+            self.payout = self.detalhes[self.cod]['payoutRatio']
+            divida_liquida_sobre_patrimonio_liquido  = None
+            divida_sobre_o_lucro_operacional = None
 
         if self.dividendoYield > 0.06:
             divYield_status = True
