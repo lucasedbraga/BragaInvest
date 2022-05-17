@@ -30,7 +30,6 @@ class Ativo():
         x = hist_max.index.to_frame()
         x = x.iloc[:, 1]
         x = list(x)
-        print(x)
 
         return hist_max['close']
         # plt.plot(np.array(hist_max['close']))
@@ -67,10 +66,12 @@ class Ativo():
             divida_liquida_sobre_patrimonio_liquido  = None
             divida_sobre_o_lucro_operacional = None
 
-        if self.dividendoYield > 0.06:
-            divYield_status = True
-        else:
-            divYield_status  = False
+            if self.dividendoYield > 0.06:
+                divYield_status = True
+                return {self.cod: [self.dividendoYield, self.dividendofuturo, self.payout]}
+            else:
+                divYield_status  = False
+                return {self.cod:'ruim'}
 
     def cotacaoxtempo(self):
         hist_max = pd.DataFrame(np.array(self.__acao.history(period='max')))
